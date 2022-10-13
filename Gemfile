@@ -6,6 +6,9 @@ ruby '2.7.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4'
 
+# Use `assigns` and `assert_template` action for rails controller tests
+gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
@@ -73,4 +76,4 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "tailwindcss-rails", "~> 2.0"
+gem 'tailwindcss-rails', '~> 2.0'
