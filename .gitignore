@@ -36,3 +36,7 @@
 
 # Ignore files in vendor directory
 /vendor/*
+
+# Ignore built assets
+/app/assets/builds/*
+!/app/assets/builds/.keep
