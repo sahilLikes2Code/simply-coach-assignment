@@ -40,13 +40,14 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
         password_confirmation: ''
       }
     }
-    assert_equal ["Password can't be blank",
-                  "Email can't be blank",
-                  'Email is invalid',
-                  'Name is too short (minimum is 3 characters)',
-                  "Name can't be blank",
-                  "Password can't be blank",
-                  'Password is too short (minimum is 6 characters)'],
+    assert_equal [
+      "Email can't be blank",
+      'Email is invalid',
+      'Name is too short (minimum is 3 characters)',
+      "Name can't be blank",
+      "Password can't be blank",
+      'Password is too short (minimum is 6 characters)'
+    ],
                  assigns(:user).errors.full_messages
     assert_response :unprocessable_entity
     assert_template :new
@@ -106,10 +107,8 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
         }
       }
 
-      assert_equal ["can't be blank", "can't be blank", 'is too short (minimum is 6 characters)'],
+      assert_equal ["can't be blank", 'is too short (minimum is 6 characters)'],
                    assigns(:user).errors[:password]
-      # TODO: if possible, look for a way to eliminate repetition of 'can't be blank' added by
-      # has_secure_password and password presence in model without breaking test cases
       assert_response :unprocessable_entity
       assert_template :new
     end
