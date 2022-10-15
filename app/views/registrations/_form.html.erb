@@ -1,6 +1,5 @@
  <%= form_with model: @user, url: sign_up_path, class: "bg-white  shadow-stone-00 shadow-md rounded px-8 pt-6 pb-6 space-y-4" do |form| %>
   <h1 class="text-4xl mb-6">Sign Up</h1>
-  <%= render 'registrations/flash_notice' %>
   <div>
     <%= form.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
     <%= form.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
@@ -17,8 +16,9 @@
     <%= form.label :password_confirmation, class: "block text-gray-700 text-sm font-bold mb-2" %>
     <%= form.password_field :password_confirmation, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  %>
   </div>
+  <p>Existing User? <%= link_to "Log in", login_path, class: "font-bold"%></p>
   <div>
     <%= form.submit "Sign Up", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full mt-4" %>
   </div>
-  <%= render 'registrations/errors' %>
+  <%= render 'application/errors', errors: @user.errors.full_messages %>
 <% end %>
