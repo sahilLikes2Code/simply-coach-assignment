@@ -22,7 +22,6 @@ module Authenticable
   private
 
   def require_login
-    redirect_to sign_up_path unless logged_in?
-    # TODO: replace sign_up_path with login_path after adding route and creating view
+    redirect_to login_path unless logged_in?
   end
 end

@@ -11,7 +11,7 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!
-      redirect_to tasks_path, notice: 'Successfully created user!'
+      redirect_to root_path, notice: 'Successfully created user!'
     else
       render :new, status: :unprocessable_entity
     end

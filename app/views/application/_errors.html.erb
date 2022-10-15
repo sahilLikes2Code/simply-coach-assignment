@@ -1,0 +1,7 @@
+<% if errors.any? %>
+  <div>
+    <% errors.each do |message| %>
+      <%= render 'application/flash_notice', message: message %>
+    <%end%>
+  </div>
+<% end %>

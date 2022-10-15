@@ -23,6 +23,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
 
       assert_equal 'Successfully created user!', flash.notice
       assert_response :redirect
+      follow_redirect!
       assert_redirected_to tasks_path
     end
   end
