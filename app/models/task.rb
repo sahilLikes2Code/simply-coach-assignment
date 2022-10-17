@@ -5,14 +5,6 @@ class Task < ApplicationRecord
 
   belongs_to :user
 
-  validates :name, presence: true, length: { minimum: 10 }
+  validates :name, presence: true, length: { minimum: 4 }
   validates :due_date, presence: true
-
-  before_save :downcase_name
-
-  private
-
-  def downcase_name
-    self.name = name.downcase
-  end
 end

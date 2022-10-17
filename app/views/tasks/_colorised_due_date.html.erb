@@ -1,0 +1,5 @@
+<div class="w-1/6">
+  <p class="pr-10 flex flex-wrap <%= task.due_date <= Date.today ? 'text-red-700' : 'text-green-700'  %>" datetime="<%= task.due_date.strftime('%FT%T') %>">
+    <%= task.due_date.strftime("%d/%m") %>
+  </p>
+</div>
