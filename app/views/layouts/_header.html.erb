@@ -1,5 +1,11 @@
 <div class="bg-blue-500 p-4 flex justify-between items-center">
-  <h1 class="text-white font-bold text-4xl">Todoist</h1>
+  <% if not easter_egg_path?%>
+    <h1 class="text-white font-bold text-4xl">
+      <%= link_to root_path do %>
+        Todoist
+      <% end %>
+    <% end %>
+  </h1>
   <% if logged_in? %>
     <h1 class="text-white text-2xl">
       <%= button_to logout_path, method: :delete do %>
