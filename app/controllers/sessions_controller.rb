@@ -33,14 +33,15 @@ class SessionsController < ApplicationController
   private
 
   def generate_error_messages
-    if params[:email].empty? && params[:password].empty?
-      @errors.push("Email can't be blank", "Password can't be blank")
-    elsif params[:email].empty?
-      @errors.push("Email can't be blank")
-    elsif params[:password].empty?
-      @errors.push("Password can't be blank")
-    else
-      @errors.push('Invalid email or password')
-    end
+    @errors =
+      if params[:email].empty? && params[:password].empty?
+        ["Email can't be blank", "Password can't be blank"]
+      elsif params[:email].empty?
+        ["Email can't be blank"]
+      elsif params[:password].empty?
+        ["Password can't be blank"]
+      else
+        ['Invalid email or password']
+      end
   end
 end

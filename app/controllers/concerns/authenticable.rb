@@ -5,6 +5,7 @@ module Authenticable
 
   included do
     before_action :require_login
+    before_action :redirect_to_root_path_if_logged_in
   end
 
   def logged_in?
@@ -27,5 +28,13 @@ module Authenticable
 
   def require_login
     redirect_to login_path unless logged_in?
+  end
+
+  def redirect_to_root_path_if_logged_in
+    redirect_to root_path if logged_in? && requested_path_login_or_signup?
+  end
+
+  def requested_path_login_or_signup?
+    request.path == '/login' || request.path == '/sign_up'
   end
 end

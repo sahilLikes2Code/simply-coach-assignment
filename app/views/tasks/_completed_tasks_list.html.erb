@@ -1,7 +1,7 @@
 <% @tasks.completed.each do |task| %>
   <ol class="text-left">
     <li class="text-xl py-2 list-disc">
-      <%= link_to edit_task_path(task), class: 'hover:text-slate-400' do %>
+      <%= link_to edit_task_path(task), class: 'hover:text-blue-700 font-bold' do %>
         <%= task.name %>
       <% end %>
     </li>

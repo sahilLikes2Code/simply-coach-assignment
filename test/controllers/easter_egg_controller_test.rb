@@ -2,20 +2,7 @@
 
 require 'test_helper'
 
-class TasksControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @task = create :task
-    @user = create(:user, name: 'jimmy', email: 'jimmy@mail.com')
-
-    post login_path, params: {
-      email: @user.email,
-      password: 'password'
-    }
-
-    assert_equal 'Logged in successfully', flash.notice
-    assert_response :redirect
-  end
-
+class EasterEggControllerTest < ActionDispatch::IntegrationTest
   test 'should get new' do
     get max_sub_array_new_path
     assert_response :success
