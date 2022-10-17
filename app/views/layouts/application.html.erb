@@ -9,8 +9,8 @@
     <%= stylesheet_link_tag "application" %>
   </head>
   <body>
-    <main class="container mx-auto my-20 px-5 flex justify-center">
-      <%= yield %>
-    </main>
+    <%= render "layouts/header" %>
+    <%= render "layouts/notice" %>
+    <%= yield %>
   </body>
 </html>

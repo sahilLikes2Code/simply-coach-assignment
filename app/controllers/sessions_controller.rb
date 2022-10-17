@@ -16,12 +16,18 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user&.authenticate(params[:password])
       login!
-      flash.now[:notice] = 'Logged in successfully'
-      redirect_to root_path
+      redirect_to root_path, notice: 'Logged in successfully'
     else
       generate_error_messages
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    return unless logged_in?
+
+    logout!
+    redirect_to root_path, notice: 'Logged out user'
   end
 
   private
