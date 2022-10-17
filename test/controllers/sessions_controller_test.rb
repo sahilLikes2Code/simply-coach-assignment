@@ -30,8 +30,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       email: 'sam@example.com',
       password: 'wrong_password'
     }
-
-    assert_equal 'Invalid email or password', flash.notice
+    assert_equal ['Invalid email or password'], assigns(:errors)
     assert_response :unprocessable_entity
     assert_template :new
   end
@@ -59,7 +58,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       password: 'password'
     }
 
-    assert_equal "Email can't be blank", flash.notice
+    assert_equal ["Email can't be blank"], assigns(:errors)
     assert_response :unprocessable_entity
     assert_template :new
   end
@@ -73,8 +72,38 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       password: ''
     }
 
-    assert_equal "Password can't be blank", flash.notice
+    assert_equal ["Password can't be blank"], assigns(:errors)
     assert_response :unprocessable_entity
     assert_template :new
+  end
+
+  test 'should redirect to root path if logged in and visited path is /login' do
+    get login_path
+    assert_response :success
+
+    post login_path, params: {
+      email: 'sam@example.com',
+      password: 'password'
+    }
+
+    get login_path
+    assert_response :redirect
+    follow_redirect!
+    assert_redirected_to tasks_path
+  end
+
+  test 'should redirect to root path if logged in and visited path is /sign_up' do
+    get login_path
+    assert_response :success
+
+    post login_path, params: {
+      email: 'sam@example.com',
+      password: 'password'
+    }
+
+    get sign_up_path
+    assert_response :redirect
+    follow_redirect!
+    assert_redirected_to tasks_path
   end
 end

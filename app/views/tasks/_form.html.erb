@@ -1,11 +1,4 @@
 <%= form_with(model: @task, local: true) do |form| %>
-  <% if @task.errors.any? %>
-    <div>
-      <ul>
-        <%= render 'application/errors', errors: @task.errors.full_messages %>
-      </ul>
-    </div>
-  <% end %>
   <div class="max-w-screen-md text-center mx-auto mt-20 mb-10">
     <div class="flex text-2xl mt-4 items-center">
       <div class="w-1/4">
@@ -23,7 +16,7 @@
         <%= form.date_field :due_date, id: :task_due_date, class: 'border border-slate-300 text-2xl p-4 mt-2 w-full' %>
       </div>
     </div>
-    <% if edit_task_path? %>
+    <% if not new_task_path? %>
       <div class="flex text-2xl mt-4 items-center">
         <div class="w-1/4">
           <%= form.label :completed%>
@@ -38,4 +31,5 @@
       <%= link_to 'Back to tasks', tasks_path, class: "bg-slate-500 hover:bg-slate-700 text-white font-bold py-3 px-4 rounded focus:outline-none focus:shadow-outline" %>
     </div>
   </div>
+  <%= render 'application/errors', errors: @errors %>
 <% end %>

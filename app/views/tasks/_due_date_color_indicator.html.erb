@@ -1,9 +1,11 @@
-<div class="flex w-1/2 justify-left py-5 space-x-5 items-center">
-  <p class="text-xl font-bold">Original due date:</p>
-  <div class="text-red-700">
-    <%= fa_icon('circle') %>
-    Past</div>
-  <div class="text-green-700">
-    <%= fa_icon('circle') %>
-    Future</div>
-</div>
+<% if @tasks.any? %>
+  <div class="flex w-1/2 justify-left py-5 space-x-5 items-center">
+    <p class="text-xl font-bold">Original due date:</p>
+    <div class="text-red-700">
+      <%= fa_icon('circle') %>
+      Past</div>
+    <div class="text-green-700">
+      <%= fa_icon('circle') %>
+      Future</div>
+  </div>
+<%end%>
